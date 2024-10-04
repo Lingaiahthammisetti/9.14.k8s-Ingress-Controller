@@ -1,7 +1,7 @@
 kind: Deployment
 apiVersion: apps/v1
 metadata:
-  name:app1
+  name: app1
   #these labels are deployment related labels
   labels:
     app: app1
@@ -38,7 +38,7 @@ spec:
 
 ---
 apiVersion: networking.k8s.io/v1
-kind: ingress
+kind: Ingress
 metadata:
   name: app1
   annotations:
@@ -46,7 +46,6 @@ metadata:
     alb.ingress.kubernetes.io/target-type: ip
     alb.ingress.kubernetes.io/tags: Environment=dev,Team=test
     alb.ingress.kubernetes.io/group.name: lingadevops
-
 spec:
   ingressClassName: alb
   rules:
