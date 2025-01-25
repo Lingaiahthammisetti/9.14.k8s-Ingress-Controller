@@ -20,7 +20,7 @@ spec:
     spec:
       containers:
       - name: app2
-        image: lingadevops/app2:1.0
+        image: lingadevops/app2:v1.0
 
 ---
 apiVersion: v1
