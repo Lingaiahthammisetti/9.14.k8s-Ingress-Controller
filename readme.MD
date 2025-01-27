@@ -1,6 +1,6 @@
 # Infrastructure
 
-![alt text](eks-infra.svg)
+
 
 Creating above infrastructure involves lot of steps, as maintained sequence we need to create
 * VPC
@@ -35,7 +35,7 @@ aws configure
 ```
 * get the kubernetes config using below command
 ```
-aws eks update-kubeconfig --region us-east-1 --name <YOUR-CLUSTER-NAME>
+aws eks update-kubeconfig --region us-east-1 --name expense-1
 ```
 * Now you should be able to connect K8 cluster
 ```
