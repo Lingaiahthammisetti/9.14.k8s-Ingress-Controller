@@ -80,6 +80,7 @@ eksctl create iamserviceaccount \
 --name=aws-load-balancer-controller \
 --attach-policy-arn=arn:aws:iam::730335449147:policy/AWSLoadBalancerControllerIAMPolicy \
 --override-existing-serviceaccounts \
+--region us-east-1 \
 --approve
 ```
 
