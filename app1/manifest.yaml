@@ -48,7 +48,7 @@ metadata:
     alb.ingress.kubernetes.io/group.name: lingadevops
     #kubernetes.io/ingress.class: alb
     #alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:us-east-1:169810528182:certificate/f990b261-8a8d-4b8c-90c5-df772948552e
-    alb.ingress.kubernetes.io/listen-ports: '[ {"HTTPS": 443}]'
+    #alb.ingress.kubernetes.io/listen-ports: '[ {"HTTPS": 443}]'
 spec:
   ingressClassName: alb
   rules:
