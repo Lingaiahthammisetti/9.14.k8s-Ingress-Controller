@@ -47,8 +47,8 @@ metadata:
     alb.ingress.kubernetes.io/tags: Environment=dev,Team=test
     alb.ingress.kubernetes.io/group.name: lingadevops
     #kubernetes.io/ingress.class: alb
-    #alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:us-east-1:169810528182:certificate/f990b261-8a8d-4b8c-90c5-df772948552e
-    #alb.ingress.kubernetes.io/listen-ports: '[ {"HTTPS": 443}]'
+    alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:us-east-1:730335449147:certificate/e16c8c0a-9a87-4965-94ee-8aa99ab340af
+    alb.ingress.kubernetes.io/listen-ports: '[ {"HTTPS": 443}]'
 spec:
   ingressClassName: alb
   rules:
