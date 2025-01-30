@@ -50,7 +50,7 @@ metadata:
     # alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:us-east-1:730335449147:certificate/e16c8c0a-9a87-4965-94ee-8aa99ab340af
     # alb.ingress.kubernetes.io/listen-ports: '[ {"HTTPS": 443}]'
 spec:
-  # ingressClassName: alb
+  ingressClassName: alb
   rules:
   - host: "app1.lingaiah.online" #ALB Rule
     http:
