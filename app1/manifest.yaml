@@ -1,129 +1,63 @@
-# kind: Deployment
-# apiVersion: apps/v1
-# metadata:
-#   name: app1
-#   #these labels are deployment related labels
-#   labels:
-#     app: app1
-#     purpose: ingress
-# spec:
-#   #modify replicas based on your requirement
-#   replicas: 1
-#   selector:
-#     matchLabels:
-#       app: app1
-#       purpose: ingress
-#   # pod definition
-#   template:
-#     metadata:
-#       labels:
-#         app: app1
-#         purpose: ingress
-#     spec:
-#       containers:
-#       - name: app1
-#         image: lingadevops/app1:v1.0
-#         imagePullPolicy: Always
-# ---
-# apiVersion: v1
-# kind: Service
-# metadata:
-#   name: app1
-# spec:
-#   selector:
-#     app: app1
-#     purpose: ingress
-#   ports:
-#   - protocol: TCP
-#     port: 80 #service-port
-#     targetPort: 80 #target-port
-# ---
-# apiVersion: networking.k8s.io/v1
-# kind: Ingress
-# metadata:
-#   name: app1-ingress
-#   annotations:
-#     alb.ingress.kubernetes.io/scheme: internet-facing
-#     alb.ingress.kubernetes.io/target-type: ip
-#     alb.ingress.kubernetes.io/tags: Environment=dev,Team=test
-#     alb.ingress.kubernetes.io/group.name: expense
-#     alb.ingress.kubernetes.io/listen-ports: '[ {"HTTPS": 443}]'
-#     # alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:us-east-1:730335449147:certificate/e16c8c0a-9a87-4965-94ee-8aa99ab340af
-# spec:
-#   ingressClassName: alb
-#   rules:
-#   - host: "app1.lingaiah.online" #ALB Rule
-#     http:
-#       paths:
-#       - pathType: Prefix
-#         path: "/"
-#         backend:
-#           service:
-#             name: app1 # ALB Target group
-#             port:
-#               number: 80
-
-
-apiVersion: apps/v1
 kind: Deployment
+apiVersion: apps/v1
 metadata:
   name: app1
+  #these labels are deployment related labels
   labels:
-    name: app1
-    tier: frontend
+    app: app1
+    purpose: ingress
 spec:
+  #modify replicas based on your requirement
   replicas: 1
   selector:
     matchLabels:
-      name: app1
-      tier: frontend
+      app: app1
+      purpose: ingress
+  # pod definition
   template:
     metadata:
       labels:
-        name: app1
-        tier: frontend
+        app: app1
+        purpose: ingress
     spec:
       containers:
-        - name: app1
-          image: hemanthkumar75/app1:v1
-          imagePullPolicy: Always
+      - name: app1
+        image: lingadevops/app1:v1.0
+        imagePullPolicy: Always
 ---
-kind: Service
 apiVersion: v1
+kind: Service
 metadata:
-  name:  app1-service
+  name: app1
 spec:
   selector:
-    name: app1
-    tier: frontend
+    app: app1
+    purpose: ingress
   ports:
-  - name:  app1-service-port
-    protocol: TCP
-    port:  80
-    targetPort:  80
+  - protocol: TCP
+    port: 80 #service-port
+    targetPort: 80 #target-port
 ---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-    name: app1-ingress
-    annotations:
-      #kubernetes.io/ingress.class: alb
-      alb.ingress.kubernetes.io/scheme: internet-facing
-      alb.ingress.kubernetes.io/target-type: ip
-     # alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:us-east-1:248189912713:certificate/bdf9c8fb-aef3-4d97-b3e3-f8ad978aa8b2
-      #alb.ingress.kubernetes.io/listen-ports: '[ {"HTTPS": 443}]'
-      alb.ingress.kubernetes.io/tags: Environment=dev,Team=test
-      alb.ingress.kubernetes.io/group.name: expense
+  name: app1-ingress
+  annotations:
+    alb.ingress.kubernetes.io/scheme: internet-facing
+    alb.ingress.kubernetes.io/target-type: ip
+    alb.ingress.kubernetes.io/tags: Environment=dev,Team=test
+    alb.ingress.kubernetes.io/group.name: lingadevops
 spec:
-    ingressClassName: alb
-    rules:
-    - host: "app1.lingaiah.online"
-      http:
-        paths:
-        - pathType: Prefix
-          path: "/"
-          backend:
-            service:
-              name: app1-service
-              port:
-                number: 80
+  ingressClassName: alb
+  rules:
+  - host: "app1.lingaiah.online" #ALB Rule
+    http:
+      paths:
+      - pathType: Prefix
+        path: "/"
+        backend:
+          service:
+            name: app1 # ALB Target group
+            port:
+              number: 80
+
