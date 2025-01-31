@@ -11,9 +11,6 @@ eksctl utils associate-iam-oidc-provider \
 ```
 curl -o iam-policy.json https://raw.githubusercontent.com/kubernetes-sigs/aws-load-balancer-controller/v2.10.0/docs/install/iam_policy.json
 ```
-```
-curl -o iam-policy.json https://raw.githubusercontent.com/kubernetes-sigs/aws-load-balancer-controller/v2.11.0/docs/install/iam_policy.json
-```
 
 ```
 aws iam create-policy \
@@ -50,3 +47,5 @@ helm repo add eks https://aws.github.io/eks-charts
 ```
 helm install aws-load-balancer-controller eks/aws-load-balancer-controller -n kube-system --set clusterName=expense --set serviceAccount.create=false --set serviceAccount.name=aws-load-balancer-controller
 ```
+
+Important Note: Please add the policy ‘ElasticLoadBalancingFullAccess’ to worker node's IAM role.

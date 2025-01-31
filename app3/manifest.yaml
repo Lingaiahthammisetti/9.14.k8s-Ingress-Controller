@@ -7,6 +7,8 @@ metadata:
     app: app3
     purpose: ingress
 spec:
+  #modify replicas based on your requirement
+  replicas: 1
   selector:
     matchLabels:
       app: app3
@@ -21,12 +23,11 @@ spec:
       containers:
       - name: app3
         image: lingadevops/app3:v1.0
-
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: app2
+  name: app3
 spec:
   selector:
     app: app3
@@ -35,18 +36,23 @@ spec:
   - protocol: TCP
     port: 80 #service-port
     targetPort: 80 #target-port
-
 ---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: app3
+  name: ingress-app3
   annotations:
     alb.ingress.kubernetes.io/scheme: internet-facing
     alb.ingress.kubernetes.io/target-type: ip
     alb.ingress.kubernetes.io/tags: Environment=dev,Team=test
     alb.ingress.kubernetes.io/group.name: lingadevops
 
+    # alb.ingress.kubernetes.io/scheme: internet-facing
+    # alb.ingress.kubernetes.io/target-type: ip
+    # alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:us-east-1:730335449147:certificate/5e52a386-de7f-4c27-8d4e-15c1afabbc8e
+    # alb.ingress.kubernetes.io/listen-ports: '[ {"HTTPS": 443}]'
+    # alb.ingress.kubernetes.io/tags: Environment=dev,Team=test
+    # alb.ingress.kubernetes.io/group.name: expense-cluster   
 spec:
   ingressClassName: alb
   rules:
@@ -60,10 +66,4 @@ spec:
             name: app3 # ALB Target group
             port:
               number: 80
-              
-
-
-
-
-
 
