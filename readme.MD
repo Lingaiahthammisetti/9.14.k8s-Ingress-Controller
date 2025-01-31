@@ -54,5 +54,4 @@ helm repo add eks https://aws.github.io/eks-charts
 ```
 helm install aws-load-balancer-controller eks/aws-load-balancer-controller -n kube-system --set clusterName=expense --set serviceAccount.create=false --set serviceAccount.name=aws-load-balancer-controller
 ```
-
-7.Important Note: Please add the policy ‘ElasticLoadBalancingFullAccess’ to worker node's IAM role.
+# 7.Important Note: Please add this policy ‘ElasticLoadBalancingFullAccess’ to EKS Worker node's IAM role and execute it.
