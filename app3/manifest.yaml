@@ -45,14 +45,9 @@ metadata:
     alb.ingress.kubernetes.io/scheme: internet-facing
     alb.ingress.kubernetes.io/target-type: ip
     alb.ingress.kubernetes.io/tags: Environment=dev,Team=test
-    alb.ingress.kubernetes.io/group.name: lingadevops
-
-    # alb.ingress.kubernetes.io/scheme: internet-facing
-    # alb.ingress.kubernetes.io/target-type: ip
-    # alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:us-east-1:730335449147:certificate/5e52a386-de7f-4c27-8d4e-15c1afabbc8e
-    # alb.ingress.kubernetes.io/listen-ports: '[ {"HTTPS": 443}]'
-    # alb.ingress.kubernetes.io/tags: Environment=dev,Team=test
-    # alb.ingress.kubernetes.io/group.name: expense-cluster   
+    alb.ingress.kubernetes.io/group.name: lingadevops 
+    alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:us-east-1:730335449147:certificate/5e52a386-de7f-4c27-8d4e-15c1afabbc8e
+    alb.ingress.kubernetes.io/listen-ports: '[ {"HTTPS": 443}]'
 spec:
   ingressClassName: alb
   rules:
