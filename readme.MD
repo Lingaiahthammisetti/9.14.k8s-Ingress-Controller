@@ -1,6 +1,8 @@
 
 # Ingress Controller - AWS Load Balancer Controller installation
 
+https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.8/deploy/installation/
+
 1. Create an IAM OIDC provider. You can skip this step if you already have one for your cluster.
 ```
 eksctl utils associate-iam-oidc-provider \
